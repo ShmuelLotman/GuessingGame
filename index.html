@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Guessing Game</title>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    </head>
+</head>
+
+<body>
+    <div id='app' class='center'>    
+        <div id='headers'>
+            <h1 id='title'>Play the Guessing Game!</h1>
+            <h3 id='subtitle'></h3><p id='ticker'>|</p>
+        </div>
+
+        <div id='main' class='container'>
+            <div id='guessInputDiv'>
+                <input id='guessInput' placeholder="#" maxlength='3' autofocus=autofocus></input>
+                <button type="button" id="goButton" class="btn btn-success btn-circle btn-xl">Go!</button>
+            </div>
+
+            <div id='guesses'>
+                <ul id='guess-list'>
+                    <li class='list-item rounded'>-</li>
+                    <li class='list-item rounded'>-</li>
+                    <li class='list-item rounded'>-</li>
+                    <li class='list-item rounded'>-</li>
+                    <li class='list-item rounded'>-</li>
+                </ul>
+            </div>
+
+            <div id="menu-btns">
+                <button id='resetButton' class='btn btn-danger'>Reset</button>
+                <button id='resetButton' class='btn btn-warning'>Hint</button>
+            </div>
+        </div>
+    </div>
+    <div id='footer' class='center'>
+        <div>
+            <div class='footer-logo col-xs-6 col-sm-3'>
+                <img src='images/fa-logo@2x_preview.png'></img>
+            </div>
+
+            <div class='footer-logo col-xs-6 col-sm-3'>
+                <h4>Project by Shmuel Lotman</h4>
+            </div>
+
+            <div class='footer-logo col-xs-6 col-sm-3'>
+                <img src='images/grace_hopper_academy_preview.png'></img>
+            </div>
+        </div>
+    </div>
+<script>
+    function writeScript(str, n) {
+if(n < str.length) {
+	container.innerHTML = str.substring(0, n+1);
+  n++;
+	setTimeout(function() {
+  writeScript(str, n)
+  }, 70)
+} else {
+	setTimeout(function() {
+  deleteScript(str, n)
+  }, 2000)
+}
+}
+function deleteScript(str, n) {
+	if(n >=0) {
+  	container.innerHTML = str.substring(0, n-1);
+    n--;
+    setTimeout(function() {
+    	deleteScript(str, n)
+    }, 70)
+  }
+
+}
+var container = document.getElementById('subtitle');
+var str = 'Guess a number between 1 and 100, and see if you got it right! Have fun!'
+writeScript(str, 0);
+</script>
+</body>
+
+</html>
